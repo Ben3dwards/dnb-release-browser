@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { mockReleases } from "./data/mockReleases";
 import SearchBar from "./components/searchBar";
 import { searchByArtist } from "./api/discogs";
 import type { DiscogsRelease } from "./types";
@@ -17,7 +16,7 @@ function App(){
 
   return(
     <div>
-      <h1>DnB Release Browser</h1>
+      <h1 className="text-3xl font-bold text-purple-500">DnB Release Browser</h1>
 
 
       <SearchBar 
