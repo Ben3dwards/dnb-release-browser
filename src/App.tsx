@@ -1,13 +1,19 @@
-import { useState} from "react";
+import { useState } from "react";
 import { mockReleases } from "./data/mockReleases";
-import ReleaseCard from "./components/releaseCard";
 import SearchBar from "./components/searchBar";
+import { searchByArtist } from "./api/discogs";
+import type { DiscogsRelease } from "./types";
 
 function App(){
   const [titleSearch, setTitleSearch] = useState('')
   const [artistSearch, setArtistSearch] = useState('')
+  const [results, setResults] = useState<DiscogsRelease[]>([])
 
-  const filteredReleases = mockReleases.filter((release) => release.title.toLocaleLowerCase().includes(titleSearch.toLowerCase()) && release.artist.toLowerCase().includes(artistSearch.toLowerCase()))
+  const handleSearch = () => {searchByArtist(artistSearch).then((data) =>{
+    setResults(data)
+  })}
+
+  //const filteredReleases = mockReleases.filter((release) => release.title.toLocaleLowerCase().includes(titleSearch.toLowerCase()) && release.artist.toLowerCase().includes(artistSearch.toLowerCase()))
 
   return(
     <div>
@@ -21,8 +27,14 @@ function App(){
       onArtistChange={setArtistSearch} 
       />
 
-      {filteredReleases.map((release)=>
-        <ReleaseCard key={release.title} release={release} />
+      <button onClick={handleSearch}>Search Discogs</button>
+
+      {results.map((release)=>
+        <div key={release.id}>
+          <img src={release.cover_image} alt={release.title} width={150}/>
+          <h2>{release.title}</h2>
+          <p>Year: {release.year}</p>
+        </div>
       )}
     </div>
   )
