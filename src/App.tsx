@@ -16,6 +16,7 @@ function App(){
 
   useEffect(() => {
     browseReleases().then((data) => {
+      console.log('Sample release:', data[0])
       setResults(getRandomResults(data, 10))
     })
   }, [])
