@@ -1,43 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchBar from "./components/searchBar";
-import { searchByArtist } from "./api/discogs";
+import ReleaseCard from "./components/releaseCard";
+import { browseReleases, searchByArtist } from "./api/discogs";
 import type { DiscogsRelease } from "./types";
 
+function getRandomResults(results: DiscogsRelease[], count: number){
+  const shuffled = [...results].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count)
+}
+
 function App(){
-  const [titleSearch, setTitleSearch] = useState('')
   const [artistSearch, setArtistSearch] = useState('')
+  const [yearSearch, setYearSearch] = useState('')
   const [results, setResults] = useState<DiscogsRelease[]>([])
 
-  const handleSearch = () => {searchByArtist(artistSearch).then((data) =>{
-    setResults(data)
-  })}
+  useEffect(() => {
+    browseReleases().then((data) => {
+      setResults(getRandomResults(data, 10))
+    })
+  }, [])
 
-  //const filteredReleases = mockReleases.filter((release) => release.title.toLocaleLowerCase().includes(titleSearch.toLowerCase()) && release.artist.toLowerCase().includes(artistSearch.toLowerCase()))
+  const handleSearch = () => {searchByArtist(artistSearch, yearSearch).then((data) => {
+    const finalResults = artistSearch ? data : getRandomResults(data, 10)
+    setResults(finalResults)
+  })}
 
   return(
     <div>
-      <h1 className="text-3xl font-bold text-purple-500">DnB Release Browser</h1>
+      <h1 className="text-3x1 font-bold text-blue-500">DnB Browser</h1>
 
-
-      <SearchBar 
-      titleSearch={titleSearch} 
-      artistSearch={artistSearch} 
-      onTitleChange={setTitleSearch} 
-      onArtistChange={setArtistSearch} 
+      <SearchBar
+        artistSearch={artistSearch}
+        yearSearch={yearSearch}
+        onArtistChange={setArtistSearch}
+        onYearChange={setYearSearch}
       />
+      <button onClick={handleSearch}>Search</button>
 
-      <button onClick={handleSearch}>Search Discogs</button>
+      {results.map((release) => (
+        <ReleaseCard key={release.id} release={release} />
+      ))}
 
-      {results.map((release)=>
-        <div key={release.id}>
-          <img src={release.cover_image} alt={release.title} width={150}/>
-          <h2>{release.title}</h2>
-          <p>Year: {release.year}</p>
-        </div>
-      )}
     </div>
   )
-
 }
 
 export default App
