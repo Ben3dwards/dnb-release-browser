@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --font-display: "Bebas Neueu", sans-sefif;
+    --font-mono: "JetBrains Mono", mono;
+
+    --color-rave-black: #0a0a0c;
+    --color-rave-green: #c6ff16;
+    --color-rave-magenta: #ff2e93;
+
+}
