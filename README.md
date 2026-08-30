@@ -1,75 +1,52 @@
-# React + TypeScript + Vite
+#Drum and Bass Browser
+A Drum and Bass discovery app - crate dig through DnB releases pulled from Discogs' catalog. Built as a project to better learn React, TypeScript, working with an external API and for my own music discovery.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![DnB Browser Screenshot](./screenshot.png)
 
-Currently, two official plugins are available:
+##Features
+- **Search by artist:** Browse an artists release history
+- **Browse by year:** pick a year and browse random tracks from that time
+- **Combine Filters:** search for an artist and year to narrow results
+- **Links** - search YouTube, Soundcloud or Spotify for a track. Or View/Buy the release on Discogs 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+##Stack
+- **React** + **TypeScript**
+- **Vite** — build tool and dev server
+- **Tailwind CSS v4** — styling
+- **Discogs API** — release/artist data
 
-## React Compiler
+## Running it locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+1. Clone the repo:
+```bash
+   git clone https://github.com/Ben3dwards/dnb-release-browser.git
+   cd dnb-release-browser
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+2. Install dependencies:
+```bash
+   npm install
 ```
+
+3. Create a `.env` file in the project root with your own Discogs API token:
+
+VITE_DISCOGS_TOKEN=your_token_here
+
+ You can generate a personal access token for free at [discogs.com/settings/developers](https://www.discogs.com/settings/developers).
+
+4. Start the dev server:
+```bash
+   npm run dev
+```
+
+5. Open `http://localhost:5173` in your browser.
+
+
+## Possible future additions
+
+- Sorting results by release date
+- Saving tracks to back to later
+
+## Acknowledgements
+
+Release, artist, and cover art data provided by the [Discogs API](https://www.discogs.com/developers).
