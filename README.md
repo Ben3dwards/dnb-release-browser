@@ -1,15 +1,15 @@
-#Drum and Bass Browser
+# Drum and Bass Browser
 A Drum and Bass discovery app - crate dig through DnB releases pulled from Discogs' catalog. Built as a project to better learn React, TypeScript, working with an external API and for my own music discovery.
 
-![DnB Browser Screenshot](./screenshot.png)
+! [DnB Browser Screenshot](./screenshot.png)
 
-##Features
+## Features
 - **Search by artist:** Browse an artists release history
 - **Browse by year:** pick a year and browse random tracks from that time
 - **Combine Filters:** search for an artist and year to narrow results
 - **Links** - search YouTube, Soundcloud or Spotify for a track. Or View/Buy the release on Discogs 
 
-##Stack
+## Stack
 - **React** + **TypeScript**
 - **Vite** — build tool and dev server
 - **Tailwind CSS v4** — styling
