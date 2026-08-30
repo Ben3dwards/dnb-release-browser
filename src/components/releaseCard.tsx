@@ -16,7 +16,7 @@ function ReleaseCard({release}: ReleaseCardProps){
                 <h2 className="font-display text-xl text-white tracking-wide truncate">{title}</h2>
                 <p className="text-base text-neutural-400 truncate">Artist(s): {artist}</p>
                 <p className="text-sm text-rave-magenta mt-1">Year: {release.year}</p>
-                <PlatformLinks artist={artist} title={title} />
+                <PlatformLinks artist={artist} title={title} discogsUri={release.uri} />
             </div>
         </div>
     )

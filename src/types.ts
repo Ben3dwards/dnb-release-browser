@@ -12,6 +12,7 @@ export type DiscogsRelease = {
   cover_image: string
   label: string[]
   genre: string[]
-  style: string[
-  ]
+  style: string[]
+  uri: string
+
 }
