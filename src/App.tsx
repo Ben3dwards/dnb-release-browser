@@ -28,10 +28,12 @@ function App(){
 
   return(
     <div className="min-h-screen bg-rave-black text-white font-mono p-6">
-      <div className="max-w-6x1 mx-auto">
-          <h1 className="font-display text-6xl tracking-wide text-rave-green mb-6">DNB BROWSER</h1>
+      <div className="max-w-7xl mx-auto">
+          <h1 className="font-display font-bold text-7xl tracking-wide text-rave-green drop-shadow-[0_0_15px_rgba(198,255,22,1)] mb-1">DNB BROWSER</h1>
 
-          <div className="flex flex-col sm:flex-row gap-3 item-start sm:items-center mb-8">
+          <p className="font-display text-3xl text-rave-magenta tracking-widest uppercase mt-1 drop-shadow-[0_0_10px_rgba(255,46,147,1)]">Virtual DnB Crate Digger!</p>
+
+          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center mb-8">
             <SearchBar
               artistSearch={artistSearch}
               yearSearch={yearSearch}

@@ -10,8 +10,8 @@ const years = Array.from({length: currentYear - 1989}, (_, i) => currentYear -i)
 
 function SearchBar({artistSearch, yearSearch, onArtistChange, onYearChange}: searchBarProps){
     return (
-        <div className="flex flex-wrap gap-3 items-center bg-neutral-900 border border-neutral-800 rounded-full px-4 py-2">
-            <input type="text" placeholder="Search By Artist" value={artistSearch} onChange={(e) => onArtistChange(e.target.value)} 
+        <div className="flex flex-wrap gap-3 items-center bg-neutral-900 border border-neutral-800 rounded-full w-full sm:w-[650px] px-4 py-2">
+            <input type="text" placeholder="Search By Artist (Leave Blank for Random Tracks!)" value={artistSearch} onChange={(e) => onArtistChange(e.target.value)} 
                 className="bg-transparent text-white placeholder-neutral-500 outline-none flex-1 min-w-[150px]"
             />
 
