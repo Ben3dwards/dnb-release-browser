@@ -17,7 +17,7 @@ function SearchBar({artistSearch, yearSearch, onArtistChange, onYearChange}: sea
 
             <div className="w-px h-6 bg-neutral-700" />
 
-                <select value={yearSearch} onChange={(e) => onYearChange(e.target.value)} className="bg-transparent text-rave-green outline-none cursor-pointer">
+                <select value={yearSearch} onChange={(e) => onYearChange(e.target.value)} className="bg-transparent text-rave-green outline-none focus:drop-shadow-[0_0_15px_rgba(198,255,22,1)] cursor-pointer">
                     <option value="" className="bg-neutral-900">Any Year</option>
                     {years.map((year)=>
                         <option key={year} value={year} className="bg-neutral-900">
