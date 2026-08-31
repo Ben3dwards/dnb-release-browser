@@ -1,5 +1,5 @@
 import type {DiscogsRelease} from '../types'
-import PlatformLinks from './platformLinks'
+import PlatformLinks from './PlatformLinks'
 import fallbackPhoto from '../assets/imageFail.png'
 
 type ReleaseCardProps = {
